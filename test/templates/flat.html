@@ -1,0 +1,66 @@
+<div class="container post-container">
+  <div class="row">
+    <div class="col-sm-12 all" ng-repeat="story in post | limitTo: limit | filter:searchNews ">
+      <article ng-if="story.url" class="post">
+        <div class="post-info">
+          <span><a ng-href="https://news.ycombinator.com/user?id={{story.by}}">By {{ story.by }}</a> at <mydate>{{story.time * 1000 | date:' HH:mm dd-MM-yyyy'}}</mydate></span>
+        </div>
+        <div class="post-info-right">
+          <span>
+            <a ng-href="https://www.facebook.com/sharer/sharer.php?u={{story.url}}" target="blank" ><i class="fa fa-round fa-facebook fa-lg"></i></a>
+            <a ng-href="https://twitter.com/home?status={{story.url}}" target="blank"><i class="fa fa-round fa-twitter fa-lg"></i></a>
+            <a ng-href="https://plus.google.com/share?url={{story.url}}" target="blank"><i class="fa fa-round fa-google-plus fa-lg"></i></a>
+          </span>
+        </div>
+        <div class="post-info-bot-right"> <a href="{{story.url}}" type="button" target=blank class="btn btn-sm btn-default">Read More</a></div>
+        <div class="post-content">
+          <a  class="panel-link" ng-href="{{story.url}}" target=blank>
+            <h2>{{ story.title }}</h2>
+          </a>
+        </div>
+        <div class="post-more">
+          <span><a ng-href="https://news.ycombinator.com/item?id=https%3A//news.ycombinator.com/item?id={{story.id}}" target=blank>{{story.descendants}} responses</a><span>
+        <i class="fa fa-heart"></i> {{story.score}}
+        </div>
+      </article>
+
+      
+      <article ng-if="!story.url" class="post">
+        <div class="post-info">
+          <span><a ng-href="https://news.ycombinator.com/user?id={{story.by}}">By {{ story.by }}</a> at <mydate>{{story.time * 1000 | date:' HH:mm dd-MM-yyyy'}}</mydate></span>
+        </div>
+        <div class="post-info-right">
+          <span>
+            <a ng-href="https://www.facebook.com/sharer/sharer.php?u=https://news.ycombinator.com/item?id={{story.id}}" target="blank" ><i class="fa fa-round fa-facebook fa-lg"></i></a>
+            <a ng-href="https://twitter.com/home?status=https://news.ycombinator.com/item?id={{story.id}}" target="blank"><i class="fa fa-round fa-twitter fa-lg"></i></a>
+            <a ng-href="https://plus.google.com/share?url=https://news.ycombinator.com/item?id={{story.id}}" target="blank"><i class="fa fa-round fa-google-plus fa-lg"></i></a>
+          </span>
+        </div>
+        <div class="post-info-bot-right"> <a href="{{story.url}}" type="button" target=blank class="btn btn-sm btn-default">Read More</a></div>
+        <div class="post-content">
+          <a  class="panel-link" ng-href="https://news.ycombinator.com/item?id={{story.id}}" target=blank>
+            <h2>{{ story.title }}</h2>
+          </a>
+        </div>
+        <div class="post-more">
+          <span><a ng-href="https://news.ycombinator.com/item?id=https%3A//news.ycombinator.com/item?id={{story.id}}" target=blank>{{story.descendants}} responses</a><span>
+
+        <i class="fa fa-heart"></i> {{story.score}}
+        </div>
+      </article>
+      <hr>
+        <!--<div ng-if="story.url" class="panel">
+          <a ng-if="story.url" class="panel-link" ng-href="{{story.url}}" target=blank>
+            <h2>{{ story.title }}</h2>
+            <div class="bot">
+              <a ng-href="https://news.ycombinator.com/item?id=https%3A//news.ycombinator.com/item?id={{story.id}}" target=blank> comments: {{story.descendants}}  | </a>
+              <i class="fa fa-heart"></i><span> {{story.score}}</span><br />
+              <a ng-href="https://www.facebook.com/sharer/sharer.php?u={{story.url}}"><i class="fa fa-facebook-official"></i></a>
+              <a ng-href="https://news.ycombinator.com/user?id={{story.by}}">by {{ story.by }}</a><span> at <mydate>{{story.time * 1000 | date:' HH:mm dd-MM-yyyy'}}</mydate></span>
+            </div>
+          </a>
+        </div>-->
+
+    </div>
+  </div>
+</div>

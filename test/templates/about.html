@@ -1,0 +1,44 @@
+<div class="container post-container about">
+  <div class="row">
+    <div class="col-md-12">
+      <h1>Building a Hacker news, infinite scroll news listing page </h1>
+      <p>On this page you will find my thoughts on how to tackle this challenge, the problems I had and how I overcame them.</p>
+      <section class="thoughts">
+        <h2>My initial thoughts</h2>
+        <div>
+          <p>
+            When I first received the challenge I thought it was pretty straight forward, send a get request to the
+            <a href="https://github.com/HackerNews/API">Hacker news api</a> to get the stories, store the data in the $scope and use ng-repeat to loop through the items and list them.
+            Later on I found out that nothing is ever as simple as we think.
+          </p>
+        </div>
+      </section>
+      <section class="problems">
+        <h2>The problems I had</h2>
+        <div>
+          <p>
+            Putting into practise my first idea was simple enough but I realised that the <a href="https://github.com/HackerNews/API">Hacker news api</a> doesn't
+            allow us to fetch all the stories, it just gives us the ID's of the stories where we then have to do another request and use the ID we received
+            to get the story content. This would lead to my first problem, the fact that they do not allow us to get all the story ID's, only the lastest 500 or to loop
+            through all the item ID's in the database and then perform a request with every item ID to check if the type is a story. Simple math will tell us that this isn't
+            an option since if they had 90,000 items we would have to perform 180,000 requests everytime we load the page. My second problem was trying to loop through the
+            ID's of the stories to then request the content, this led to a problem because of Angulars´s asynchronous nature. The third problem came from the infiniteScroll.
+            </thead>
+          </p>
+        </div>
+      </section>
+      <section class="overcoming">
+        <h2>How I overcame them</h2>
+        <p>
+          I overcame the first problem by simply getting the latest 500 stories instead of every story. The second problem was solved by using Angularjs´s $q. The infinite scroll
+          problem I solved by creating my own version instead of using the well know <a href="https://sroze.github.io/ngInfiniteScroll/">ngInfiniteScroll</a>, what I did was give a
+          limit variable to the main ngrepeat and everytime the user scrolled near the end of the page, I would increment that variable. I start the limit variable with 20 so the
+          page also starts with 20 posts, everytime the user scroll's down to the end of the page I simply add another 20 and use the $scope.$apply to update my $scope.
+        </p>
+        <div>
+        </div>
+      </section>
+
+    </div>
+  </div>
+</div>
